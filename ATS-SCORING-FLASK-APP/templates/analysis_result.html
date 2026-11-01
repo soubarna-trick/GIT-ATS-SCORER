@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='analysis.css') }}">
+    <link rel="stylesheet" href="../static/analysis.css">
+    <style>
+    </style>
+</head>
+<body>
+
+
+    <!-- WELCOME SECTION -->
+    <header>
+        <div class="inner_text">
+            <h1>You’re almost there, {{details.get('first_name')}}🎉!</h1>
+            <p>We’ll help you enhance your resume and impress hiring managers</p>
+        </div>
+    <!-- WELCOME SECTION -->
+    
+    </header>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main_content">
+        <div class="features">
+
+            <!-- SCORE AND REPORT -->
+            <div class="ats_score_report">
+                <p class="hd">YOUR ATS SCORE</p>
+                <div class="score">
+                    <div class="score_wrapper">
+                        <!-- <h2>92</h2> -->
+                        <h2>{{ats_score}}</h2>
+                    </div>
+                    <div class="remark">
+                        {% if ats_score >= 70 %}
+                            <p><strong>FAIR</strong></p>
+                            <p>RESUME STRENGTH</p>
+                        {% elif ats_score > 50 and ats_score <= 69 %}
+                            <p><strong>GOOD</strong></p>
+                            <p>RESUME STRENGTH</p>
+                        {% else %}
+                            <p><strong>NEED TO IMPROVE</strong></p>
+                            <p>RESUME STRENGTH</p>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+                <HR></HR>
+
+                
+
+                <!-- SUGGESTIONS -->
+                <div class="suggestion">
+                    <p class="head">Review our suggestions to see what you can fix.</ class="head">
+                    <ul>
+                        {% for category, value in distribution.items() %}
+                            <li>
+                                <p>{{ category }}:</p> 
+                                <p>{{ value }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                
+
+                <p style="text-align: center;"><a href="{{ url_for('index') }}">Go Back</a></p>
+            </div>
+
+
+
+            <!-- STRENGTH AND SUGGESTION -->
+
+            <div class="right-document">
+
+                <div class="resume">
+                    <div class="resume_contacts">
+                        <p>{{details.get('location')}}</p>
+                        <p>{{details.get('email')}}</p>
+                        <p>{{details.get('mobile_number')}}</p>
+                    </div>
+                    <hr>
+                    <p class="emp_name" style="text-transform:uppercase;">{{details.get('name')}}</p>
+                    <hr>
+                    <div class="resume_details">
+                        {% if details %}
+                            {% for key, value in details.items() %}
+                                {% if key not in ["name", "first_name", "mobile_number", "email","location"] %}
+                                    <div class="item">
+                                        <p>{{ key.capitalize() }}:</p>
+                                            {% if value is iterable and value is not string %}
+                                                <ul>
+                                                    {% for item in value %}
+                                                        <li>{{ item }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                {{ value }}
+                                            {% endif %}
+                                    </div>
+                                    <hr>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <div class="strength">
+                    {% if 'Strengths' in comments %}  
+                        <h3><strong>💪🏼Strengths<span style="display: inline-block; transform: scale(-1,1);">💪🏼</span></strong></h3>
+                        <p> {{ comments.Strengths }}</p>  
+                    {% else %}
+                        <strong>Strengths:</strong> Not available
+                    {% endif %}
+                </div>
+                
+                <div class="suggestion_comment">
+                    <h3 class="sg-head">🧐POINTS TO CONSIDER🧐</h3>
+                    <ul>
+                        {% for improvement_key, improvement_text in Suggestions.items() %}
+                            <li>
+                                <h3><span style="font-size: 35px;">💡</span><strong>{{ improvement_key }}</strong></h3>
+                                <p>{{ improvement_text }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        {% if details %}
+            {% for key, value in details.items() %}
+                {% if key not in ["name", "first_name", "mobile_number", "email"] %}
+                    <div class="item">
+                        <span class="key">{{ key.capitalize() }}:</span>
+                        <span class="value">
+                            {% if value is iterable and value is not string %}
+                                <ul>
+                                    {% for item in value %}
+                                        <li>{{ item }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                {{ value }}
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+
+
+    <div class="container">
+        <h1>ATS Resume Analysis Result</h1>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% if first_name %}
+        <div class="section">
+            <h2>ATS Report</h2>
+            <pre>{{ first_name }}</pre>
+        </div>
+        {% endif %}
+
+        {%if ats_score %}
+        <div class="section">
+            <h2>ATS-SCORE</h2>
+            <pre>{{ats_score}}</pre>
+        </div>
+        {% endif %}
+
+        {%if distribution %}
+        <div class="section">
+            <h2>DISTRIBUTION</h2>
+            <ul>
+                {% for category, value in distribution.items() %}
+                    <li style="list-style: none;">{{ category }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+
+        {%if comments %}
+        <div class="section">
+            <h2>COMMENTS</h2>
+            <ul>
+                {% for comment_type, comment_text in comments.items() %}
+                    <li><strong>{{ comment_type }}:</strong> {{ comment_text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+
+        {%if Suggestions %}
+        <div class="section">
+            <h2>SUGGESTIONS</h2>
+            <ul>
+                {% for improvement_key, improvement_text in Suggestions.items() %}
+                    <li><strong>{{ improvement_key }}:</strong> {{ improvement_text }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+
+        {% if employee_data %}
+            <h2>EMPLOYEE DETAILS</h2>
+            <pre>{{employee_data}}</pre>
+        {% endif %}
+
+        {% if details %}
+            <h2>DETAILS</h2>
+            <pre>{{details}}</pre>
+        {% endif %}
+
+        
+    </div>
+</body>
+</html>

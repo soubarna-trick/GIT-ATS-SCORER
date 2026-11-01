@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume ATS Analysis</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="../static/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="image">
+        <div class="header">
+        <h1 class="head">TALENT SEARCH</h1>
+        </div>
+    <div class="container">
+        <h1>Resume ATS Analysis</h1>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data" id="resume-form">
+            <label for="resume">
+                <i class="fas fa-upload"></i>Upload resume (PDF):</label>
+            <input type="file" name="resume" id="resume" accept=".pdf" required><br>
+
+            <label for="job_description">
+                <i class="fas fa-clipboard-list"></i>Job Description:</label>
+            <textarea name="job_description" id="job_description" placeholder="Paste the job description here..." required></textarea>
+
+            <input type="submit" value="Analyze">  
+        </form>
+
+        <div id="results-container" style="display:none;">
+            <div class="ats-result">
+                <h2>ATS Score</h2>
+                <pre id="ats-score"></pre>
+            </div>
+            <button class="btn-clear" type="button" onclick="clearResults()">
+                <i class="fas fa-eraser"></i> Clear Results
+            </button> 
+        </div>
+        <div id="loading" class="loading-spinner" style="display:none;">
+            <div class="spinner"></div>
+        </div>
+        
+    </div>
+    <div class="container1">
+        <h1>LinkedIn People Search</h1>
+        <form method="POST" action="/search_people">
+            <label for="keywords">
+                <i class="fas fa-search"></i>Enter the keywords below :</label>
+                <textarea id="keywords" name="keywords" placeholder="e.g: python, developer, software engineer, etc." required></textarea>
+            <input type="submit" value="Search">
+        </form>
+        
+    </div>
+    </div>
+
+    <script src="../static/scripts.js"></script>
+</body>
+</html>

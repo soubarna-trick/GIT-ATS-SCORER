@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", serif;
+    font-optical-sizing: auto;  
+}
+
+body {
+    font-family: sans-serif;
+    /* margin: 20px; */
+    background-color: #F6F5F0;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.section {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+pre { /* For displaying preformatted text (like the Gemini output) */
+    white-space: pre-wrap; /* Allow text to wrap */
+    background-color: #f0f0f0;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+.suggestions-list {
+    list-style-type: disc; /* Use bullet points */
+    padding-left: 20px; /* Add some indentation */
+}
+
+
+/* WELCOME SECTION START */
+header{
+    width: 100%;
+    height: 170px;
+    background-color: #092347;
+    color: white;
+    
+    
+    & .inner_text{
+        width: 75%;
+        margin: 0px 100px;
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: first baseline;
+
+        & h1{
+            font-size: 50px;
+            text-align: left;
+        }
+        
+        & p{
+            padding-top: 10px;
+        }
+    } 
+    
+}
+/* WELCOME SECTION END */
+
+
+/* MAIN CONTENT START*/
+.main_content{
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    /* position: absolute; */
+    /* FEATURE START */
+
+
+    & .features{
+        width: 85%;
+        height: 100%;
+        /* background-color: yellow; */
+        margin-top: 3%;
+        position: relative;  
+        display: flex;
+        justify-content: space-between; 
+        
+
+        & a{
+            width: 100%;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            padding: 10px 50px;
+            /* padding-top: 30px; */
+            background-color: #FFFFFF;
+            color: #092347;
+            box-shadow:  rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+            border-radius: 30px;
+
+        }
+
+
+    }
+
+
+    /* FEATURE END*/
+}
+
+.ats_score_report{
+    width: 32%;
+    height: 55%;
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 20px;
+    /* position: sticky; */
+    /* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
+    box-shadow:  rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+    /* FOR STICKY BEHAVIOUR */
+    position: sticky; /* Make it sticky */
+    top: 0; /* Stick to the top of the viewport */
+    overflow-y: auto;
+
+
+
+    & .hd{
+        text-align: center;
+        font-weight: bolder;
+        color: #092347;
+        font-size: 20px;
+    }
+
+
+    /* SCORING PART START */
+
+    & .score{
+        display: flex;
+        padding-top: 20px;
+        justify-content: space-around;
+        /* justify-content: space-between; */
+        color: #092347;
+        padding-bottom: 10px;
+
+
+        & .score_wrapper{
+            /* background-color: #00856C; */
+            width: 92px;
+            height: 92px;
+            /* padding: 10px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: rgba(0, 133, 108, 0.24) 0px 3px 8px;
+            
+
+            & h2{
+                font-size: 40px;
+                width: 80px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #FFFFFF;
+                /* padding: 15px; */
+                /* text-align: center; */
+                box-shadow: rgba(0, 133, 108, 0.24) 0px 3px 8px;
+            
+                border-radius: 50%;
+            }
+        }
+
+        & .remark{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+
+            & strong{
+                font-weight: bolder;
+                color: #092347;
+            }
+
+            & p{
+                /* font-weight: bolder; */
+                padding-bottom: 5px;
+                color: #00856C;
+            }
+            & hr{
+                margin-top: 10px;
+                /* border-width: 20px; */
+                color: #092347;
+            }
+
+        }
+
+    }
+
+
+    /* SUGGESTIONS PART START */
+
+    & .suggestion{
+        padding-top: 20px;
+        margin-bottom: 15px;
+
+        & .head{
+            /* text-align: justify; */
+            color: #092347;
+            font-weight: bolder;
+        }
+
+        & ul{
+            padding-top: 20px;
+            font-size: 14px;
+            padding: 25px 21px;
+        }
+
+        & li{
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 5px;
+            list-style: none;
+            color: #092347;
+            font-weight: bold;
+
+        }
+
+    }
+
+
+}
+
+
+/* STRENGTH AND IMPROOVEMENT */
+
+.right-document{
+    width: 64%;
+
+    & .strength{
+        width: 100%;
+        padding: 30px;
+        border-radius: 20px;
+        background-color: rgb(6, 149, 123,0.2);
+        color: rgb(0, 45, 107);
+        margin-bottom: 20px;
+        box-shadow:  rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 50px 100px -20px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;;
+        
+        
+        & p{
+            padding-left: 50px;
+            padding-top: 7px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+    
+    }
+}
+
+/* SHOWING RESUME */
+
+.resume{
+    width: 100%;
+    height: auto;
+    padding-bottom: 20px;
+
+    margin-bottom: 23px;
+    background-color: #FFFFFF;
+    /* padding: 10px; */
+    border-radius: 20px;
+    box-shadow:  rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;;
+    margin-bottom: 24px;
+    /* margin-bottom: 20px; */
+    /* contact details */
+
+    & .resume_contacts{
+        background-color: rgb(128, 128, 128,0.5);
+        border-radius: 20px 20px 0px 0px;
+        display: flex;
+        justify-content: space-evenly;
+    
+        /* border: solid; */
+        /* font-size: 10px; */
+
+        & p{
+            font-size: 10px;
+            padding: 20px 0px;
+        }
+
+    }
+
+
+    & .emp_name{
+        /* margin: 10px 10px; */
+        font-size: 24px;
+        text-align: left;
+        padding: 10px;
+        padding-left: 80px;
+        margin: auto;
+    }
+
+
+    /* Resume details */
+    
+    & .resume_details{
+        padding-left: 30px;
+        padding-right: 30px;
+        font-size: 11px;
+
+        & .item{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 100%;
+            /* background-color: green; */
+            display: flex;
+            justify-content: space-between;
+            /* display: flex;    */
+
+            & p {
+                width: 30%;
+                /* background-color: red; */
+                text-transform: capitalize;
+                font-weight: bold;
+                text-align: justify;
+            }
+
+            & ul{
+                width: 70%;
+                /* background-color: yellow; */
+            }
+
+        }
+
+    }
+
+
+    /* for */
+
+
+}
+
+
+/* SHOWING RESUME END */
+
+
+
+
+.suggestion_comment{
+    width: 100;
+    height: auto;
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow:  rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;;
+
+    & .sg-head{
+        text-align: center;
+        font-size: 30px;
+        /* text-shadow: 1px 1px  rgba(0, 35, 71, 0.5);; */
+        color: rgb(0, 45, 107);
+    }
+
+
+    & ul{
+        padding: 30px;
+        list-style: none;
+    }
+
+    & li{
+        padding-bottom: 20px;
+        color: rgb(0, 45, 107);
+
+        & h3{
+            padding-bottom: 20px;
+            font-size: 25px;
+        }
+
+        & p{
+            padding: 30px;
+            background-color:rgba(211, 233, 235, 0.5);
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: justify;
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+/* MAIN_CONTENT END*/

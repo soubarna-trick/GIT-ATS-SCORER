@@ -1,0 +1,83 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script> 
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Document</title>
+    <style>
+        
+        
+
+    </style>
+</head>
+<body>
+    
+
+        
+
+    <!-- <div class="hero"> -->
+
+
+    <!-- #HERO SECTION -->
+    <div class="container">
+        <div class="super_div">
+            <div class="upload">
+                <div class="left_details">
+                    <h1>ATS Resume Checker: <br>Instantly Review, Score & <br>Grade Your Resume</h1>
+                    <p>Land your dream job faster with an ATS-optimized resume. Our free ATS Resume Checker instantly scans for 30+ key criteria, delivering actionable suggestions to boost your resume score—accessible right from your desktop or mobile device.</p>
+                    
+
+                    
+
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="file-upload-wrapper"> 
+                            <label for="resume" class="custom-file-upload">Choose File</label>
+                            <input type="file" name="resume" id="resume" accept=".pdf" required>
+                            <br><span id="file-name">No file chosen</span>
+                        </div>
+    
+                        <label for="job_description"></label>
+                        <textarea name="job_description" id="job_description" placeholder="Paste the job description here..." required></textarea><br><br>
+    
+                        <input type="submit" value="Analyze" class="btn">
+                    </form>
+                </div>
+            </div>
+            <div class="picture">
+            </div>
+        </div>
+    </div>
+                        <!-- <img src="../ats-resume-checker-score.png" alt="ats_resume_checker_image"> -->
+
+
+
+
+
+    <!-- <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <label for="resume">Upload your resume (PDF):</label>
+            <input type="file" name="resume" id="resume" accept=".pdf" required><br><br>
+
+            <label for="job_description">Job Description:</label>
+            <textarea name="job_description" id="job_description" placeholder="Paste the job description here..." required></textarea><br><br>
+
+            <input type="submit" value="Analyze">
+        </form>
+    </div>   -->
+</body>
+</html>
